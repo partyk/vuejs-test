@@ -1,0 +1,1 @@
+{"version":3,"sources":["<input css 3>"],"names":[],"mappings":"AAAA;EACE,UAAU;EACV,iBAAiB;EACjB,gBAAkB;EAAlB,kBAAkB,CAAC","file":"test-sass.css","sourcesContent":[".testing {\n  margin: 0; \n  width: 42.85714%;\n  font-size: 2.3rem;}\n"]}

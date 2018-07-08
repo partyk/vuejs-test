@@ -1,0 +1,1 @@
+{"version":3,"sources":["<input css 1>"],"names":[],"mappings":"AAAA;EACE,eAAe;EACf,UAAU;EACV,WAAW;EACX,WAAW;CACZ","file":"test-less.css","sourcesContent":[".aaa .bbb {\n  display: block;\n  margin: 0;\n  padding: 0;\n  color: red;\n}\n"]}
