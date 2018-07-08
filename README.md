@@ -1,5 +1,3 @@
-"# " 
-=======
 # vuejs-test
 Vue.js test
 
