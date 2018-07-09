@@ -10,11 +10,6 @@ let UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const $ = plugins();
 
-let isMinwatch = function () {
-    return $.util.env._[0] === 'minwatch';
-};
-
-
 gulp.task('webpack', function (callback) {
 
     console.info('Webpack compile');
@@ -22,6 +17,9 @@ gulp.task('webpack', function (callback) {
     let isReady = false;
     let settings = {
         mode: isProduction() ? 'production' : 'development',
+        performance: {
+            //hints: false //pokud se bude buildovat vetsi soubor nez 250kB, tak lze potlacit hlasku false
+        },
         resolve: {
             alias: {
                 'jquery' : require.resolve('jquery'),
@@ -39,8 +37,8 @@ gulp.task('webpack', function (callback) {
         output: {
             path: path.resolve(config.dist.scripts.root),
             filename: '[name].js',
-            publicPath: '../js/',
-            chunkFilename: '[name].chunk.js',
+            publicPath: '../js/', //nastaveni cesty k chunkum
+            chunkFilename: 'chunks/[name].chunk.js',
         },
         module: {
             rules: [
@@ -64,7 +62,7 @@ gulp.task('webpack', function (callback) {
             
         ],
         profile: true,
-        watch: !isProduction() || isMinwatch(),
+        watch: !isProduction(),
         watchOptions: {
             ignored: /node_modules|bower_components/,
         },
@@ -118,7 +116,7 @@ gulp.task('webpack', function (callback) {
         } else if (warnings.length > 0) {
             onError(warnings.toString());
         } else {
-            $.util.log('[webpack]', stats.toString(config.webpack.stats));
+            console.log('[webpack]', stats.toString(config.webpack.stats));
         }
 
         if (!isReady) {
