@@ -7,6 +7,7 @@ let webpack = require('webpack');
 let gulp = require('gulp');
 let plugins = require('gulp-load-plugins');
 let UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const { VueLoaderPlugin } = require('vue-loader')
 
 const $ = plugins();
 
@@ -25,7 +26,7 @@ gulp.task('webpack', function (callback) {
                 'jquery' : require.resolve('jquery'),
                 'vue$': 'vue/dist/vue.esm'
             },
-            extensions: ['.js', '.json'],
+            extensions: ['*', '.vue', '.js', '.json'],
             modules: [
                 config.basePath.nodeModule,
                 config.basePath.bowerComponents
@@ -59,7 +60,7 @@ gulp.task('webpack', function (callback) {
             ],
         },
         plugins: [
-            
+            new VueLoaderPlugin()
         ],
         profile: true,
         watch: !isProduction(),

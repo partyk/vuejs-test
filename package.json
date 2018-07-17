@@ -43,6 +43,7 @@
     "beeper": "^1.1.1",
     "better-console": "^1.0.1",
     "browser-sync": "^2.24.5",
+    "css-loader": "^1.0.0",
     "cssnano": "^4.0.0",
     "deepmerge": "^2.1.1",
     "gulp": "^4.0.0",
@@ -69,6 +70,10 @@
     "postcss-csscomb": "^1.0.2",
     "postcss-discard-duplicates": "^4.0.0",
     "uglifyjs-webpack-plugin": "^1.2.7",
+    "vue-loader": "^15.2.5",
+    "vue-router": "^3.0.1",
+    "vue-style-loader": "^4.1.0",
+    "vue-template-compiler": "^2.5.16",
     "webpack": "^4.15.1"
   },
   "dependencies": {
