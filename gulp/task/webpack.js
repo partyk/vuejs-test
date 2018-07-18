@@ -7,7 +7,7 @@ let webpack = require('webpack');
 let gulp = require('gulp');
 let plugins = require('gulp-load-plugins');
 let UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const { VueLoaderPlugin } = require('vue-loader')
+const { VueLoaderPlugin } = require('vue-loader');
 
 const $ = plugins();
 
@@ -106,9 +106,9 @@ gulp.task('webpack', function (callback) {
     });
 
     let bundle = webpack(settings, function (error, stats) {
-        var jsonStats = stats.toJson();
-        var errors = jsonStats.errors;
-        var warnings = jsonStats.warnings;
+        let jsonStats = stats.toJson();
+        let errors = jsonStats.errors;
+        let warnings = jsonStats.warnings;
 
         if (error) {
             onError(error);
@@ -126,6 +126,4 @@ gulp.task('webpack', function (callback) {
 
         return isReady = true;
     });
-
-    //callback();
 });
