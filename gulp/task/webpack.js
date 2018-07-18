@@ -55,7 +55,7 @@ gulp.task('webpack', function (callback) {
                 {
                     test: /\.js(x)?$/,
                     exclude: /node_modules|bower_components/,
-                    loader: 'babel-loader',
+                    use: ['babel-loader','eslint-loader']
                 },
             ],
         },
