@@ -1,6 +1,6 @@
 import 'babel-polyfill'; // polyfill
 import Vue from 'vue'; // vue
-import App from '.././components/ui/App';
+// import App from '.././components/ui/App';
 
 global.Vue = Vue;
 global.jQuery = jQuery;
@@ -8,7 +8,26 @@ global.jQuery = jQuery;
 global.app = new Vue({
     el: '#app',
     data: {
-        message: 'Hello Vue!'
+        message: 'Hello Vue!',
+        title: 'Ja jsem title',
+        show: true,
+        listObject: {
+            1: 'ahoj',
+            2: 'kuk',
+            3: 'vyhul'
+        },
+        listArray: [
+            'a',
+            'b',
+            'c'
+        ]
     },
-    render: h => h(App)
+    methods: {
+        reverseMessage: function (event) {
+            console.log('Click');
+            let text = jQuery('#text').text();
+            jQuery('#text').text(text.split('').reverse().join(''));
+            this.message = this.message.split('').reverse().join('');
+        }
+    }
 });
