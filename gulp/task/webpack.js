@@ -23,7 +23,7 @@ gulp.task('webpack', function (callback) {
         },
         resolve: {
             alias: {
-                'jquery' : require.resolve('jquery'),
+                // 'jquery' : require.resolve('jquery'),
                 'vue$': 'vue/dist/vue.esm'
             },
             extensions: ['*', '.vue', '.js', '.json'],
@@ -75,8 +75,8 @@ gulp.task('webpack', function (callback) {
 
 	//automaticke nacitani modulu
 	settings.plugins.push(new webpack.ProvidePlugin({
-        $: 'jquery',
-        jQuery: 'jquery'
+        // $: 'jquery',
+        // jQuery: 'jquery'
 	}));
 
     if (isProduction()) {
