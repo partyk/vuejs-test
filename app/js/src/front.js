@@ -1,14 +1,26 @@
-import 'babel-polyfill'; // polyfill
 import Vue from 'vue'; // vue
-import App from '.././components/ui/App';
 
 global.Vue = Vue;
 global.jQuery = jQuery;
 
+const myComponent = {
+    name: 'my-component',
+    template: `
+        <h1>{{ count }}</h1>
+    `,
+    data: () => {
+        return {
+            count: 'aaaa'
+        };
+    }
+};
+
 global.app = new Vue({
-    el: '#app',
-    data: {
-        message: 'Hello Vue!'
+    el: '#app', // ID elementu
+    components: {
+        myComponent
     },
-    render: h => h(App)
+    data: {
+        msg: 'Hello Vue!'
+    }
 });
