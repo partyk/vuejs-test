@@ -24,7 +24,10 @@ gulp.task('less', (callback) => {
             // require('postcss-opacity')(),
             // require('postcss-pseudoelements')(),
             // require('postcss-vmin')(),
-        ]
+        ],
+        less: {
+            useFileCache: true // enabled cache file
+        }
     };
 
     //pridam do postCssPluginy pro produkci
@@ -37,7 +40,9 @@ gulp.task('less', (callback) => {
     //vytvorim cestu + filtr na soubory
     let src = config.app.less.src + '**/*.+(less)';
 
-    let stream = gulp.src(src);
+    let stream = gulp.src(src, {
+        // since: gulp.lastRun('less') // This option takes a timestamp, and gulp.src will filter files that are older than the given time.
+    });
 
     stream
         //nastavim plumber a v pripade chyby volam callback onError
@@ -53,8 +58,8 @@ gulp.task('less', (callback) => {
             ? $.noop()
             : $.sourcemaps.init()
         )
-        //kompilace sass
-        .pipe($.less())
+        //kompilace less
+        .pipe($.less(settings.less))
         //postcss
         .pipe($.postcss(settings.postCssPlugins))
         //vygeneruji sourcemaps

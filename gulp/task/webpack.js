@@ -80,18 +80,8 @@ gulp.task('webpack', function (callback) {
 	}));
 
     if (isProduction()) {
-        //priprava na prechod na webpack 4
         settings.plugins.push(new UglifyJsPlugin({
-            uglifyOptions: {
-              ecma: 5,
-              warnings: false,
-              output: {
-                comments: false,
-                beautify: false,
-              },
-              toplevel: false,
-              ie8: false,
-            }
+            uglifyOptions: config.optionsUglify
         }));
 
         settings.plugins.push(new webpack.optimize.ModuleConcatenationPlugin());

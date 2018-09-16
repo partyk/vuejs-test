@@ -4,7 +4,7 @@ let optionsApp = {
     develop: {
         browserSync: false,
     }
-}
+};
 
 let dirName = {
     root: '/',
@@ -18,7 +18,7 @@ let dirName = {
     fonts: 'fonts',
     extends: 'extends',
     static: 'static'
-}
+};
 
 let basePath = {
     absoluteRoot: __dirname,
@@ -31,6 +31,10 @@ let basePath = {
 
 let publicPath = {
     root: '/',
+    images: {
+        root: '/' + dirName.images + '/',
+        extends: '/' + dirName.images + '/' + dirName.extends + '/'
+    },
     styles: {
         root: '/' + dirName.styles + '/'
     },
@@ -51,7 +55,7 @@ let app = {
     scripts: {
         root: basePath.app + dirName.scripts + '/',
         src: basePath.app + dirName.scripts + '/' + dirName.src + '/',
-        extends: basePath.app + dirName.scripts + '/' + dirName.extends + '/',
+        extends: basePath.app + dirName.scripts  + '/' + dirName.src + '/' + dirName.extends + '/',
         static: basePath.app + dirName.scripts + '/' + dirName.static + '/',
     },
     images: {
@@ -104,13 +108,39 @@ let browser = ['> 2% in CZ', 'last 3 version', 'iOs >= 7', 'Explorer >= 10'];
 //velikost vychoziho pisma
 let fontSize = 10;
 
-//spojovani js souboru
-let concatJs = {
-    dependencyJs : {
-        name: "dependency.js",
-        files: []
-    }
-}
+// uglify options
+let optionsUglify = {
+    /*
+    compress: {
+
+    },
+    output: {
+        // output options
+    },
+    sourceMap: {
+        // source map options
+    },
+    parse: {
+        // parse options
+    },*/
+
+    /* mangle: true,
+    ecma: 5, // specify one of: 5, 6, 7 or 8
+    keep_classnames: false,
+    keep_fnames: false,
+    ie8: false,
+    nameCache: null, // or specify a name cache object
+    safari10: false,
+    toplevel: false,
+    warnings: false,
+    unsafe: false, */
+};
+
+let optionsJs = {
+    extends: [
+        app.scripts.extends + '**/*.js'
+    ]
+};
 
 module.exports = {
     optionsApp: optionsApp,
@@ -118,8 +148,10 @@ module.exports = {
     publicPath: publicPath,
     app: app,
     dist: dist,
+    dirName: dirName,
     webpack: webpack,
     browser: browser,
     fontSize: fontSize,
-    concatJs: concatJs
+    optionsUglify: optionsUglify,
+    optionsJs: optionsJs
 };
