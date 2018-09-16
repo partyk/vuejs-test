@@ -1,27 +1,32 @@
 <!DOCTYPE html>
 <html lang="cs">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=0">
-        <style type="text/css">
-            @import "ui/css/vue.css";
-        </style>
-    </head>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=0">
+    <style type="text/css">
+        @import "ui/css/vue.css";
+    </style>
+</head>
 
-    <body>
-        <div id="app">
+<body>
+    <div class="nav-bar"></div>
+    <div id="app">
+
+        <div class="product">
 
             <div class="product-image">
-                <img src=""/>
+                <img :src="image">
             </div>
 
             <div class="product-info">
                 <h1>{{ product }}</h1>
-                <p>{{ description }}</p>
+                <a :href="link" target="_blank">More products like this</a>
             </div>
 
         </div>
-        <script type="text/javascript" src="ui/js/front.js"></script>
-    </body>
+
+    </div>
+    <script type="text/javascript" src="ui/js/front.js"></script>
+</body>
 </html>
