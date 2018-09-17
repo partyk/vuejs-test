@@ -1,12 +1,16 @@
-import 'babel-polyfill'; // polyfill
 import Vue from 'vue'; // vue
-// import App from '.././components/ui/App';
+import App from '.././components/ui/App';
+
+console.log(App);
 
 global.Vue = Vue;
 global.jQuery = jQuery;
 
 global.app = new Vue({
     el: '#app',
+    components: {
+        'app': App
+    },
     data: {
         message: 'Hello Vue!',
         title: 'Ja jsem title',

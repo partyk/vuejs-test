@@ -33,7 +33,10 @@ gulp.task('webpack', function (callback) {
             ],
         },
         entry: {
-            front: path.resolve(config.app.scripts.src, 'front.js'),
+            front: [
+                'babel-polyfill',
+                path.resolve(config.app.scripts.src, 'front.js'),
+            ]
         },
         output: {
             path: path.resolve(config.dist.scripts.root),
