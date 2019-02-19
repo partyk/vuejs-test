@@ -15,69 +15,30 @@ import Vue from 'vue'; // vue
 
 // simple
 
+global.Vue = Vue;
+
+const obj = global.obj = {
+    foo: 'bar'
+};
+
+// Object.freeze(obj);
+
 global.app = new Vue({
     el: '#app',
-    data: {
-        message: 'Hello Vue!'
-    }
+    data: obj
 });
 
-global.app2 = new Vue({
-    el: '#app-2',
-    data: {
-        message: 'You loaded this page on ' + new Date().toLocaleString()
-    }
+const data = global.data = { a: 1 };
+const vm = global.vm = new Vue({
+    el: '#example',
+    data: data
 });
 
-global.app3 = new Vue({
-    el: '#app-3',
-    data: {
-        seen: true
-    }
-});
+// vm.$data === data // => true
+// vm.$el === document.getElementById('example'); // => true
 
-global.app4 = new Vue({
-    el: '#app-4',
-    data: {
-        todos: [
-            { text: 'Learn JavaScript' },
-            { text: 'Learn Vue' },
-            { text: 'Build something awesome' }
-        ]
-    }
-});
-
-global.app5 = new Vue({
-    el: '#app-5',
-    data: {
-        message: 'Hello Vue.js!'
-    },
-    methods: {
-        reverseMessage: function () {
-            this.message = this.message.split('').reverse().join('');
-        }
-    }
-});
-
-global.app6 = new Vue({
-    el: '#app-6',
-    data: {
-        message: 'Hello Vue!'
-    }
-});
-
-Vue.component('todo-item', {
-    props: ['todo'],
-    template: '<li>{{ todo.text }} ({{ todo.id }})</li>'
-});
-
-global.app7 = new Vue({
-    el: '#app-7',
-    data: {
-        groceryList: [
-            { id: 0, text: 'Vegetables' },
-            { id: 1, text: 'Cheese' },
-            { id: 2, text: 'Whatever else humans are supposed to eat' }
-        ]
-    }
+// $watch is an instance method
+vm.$watch('a', function (newValue, oldValue) {
+    console.log(newValue, oldValue);
+    // This callback will be called when `vm.a` changes
 });
